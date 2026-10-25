@@ -1,0 +1,15 @@
+VIY STUDIO — PAQUETE COMPLETO
+Incluye index.html, style.css y script.js.
+
+INSTALACIÓN EN ACODE:
+1. Haz una copia de seguridad de tu carpeta VIYStudio actual.
+2. Copia los tres archivos de este paquete a tu carpeta del proyecto.
+3. Coloca tu logo en esa carpeta con el nombre exacto logo-viy.jpg.
+4. Abre index.html y actualiza la vista previa.
+
+IMPORTANTE:
+- La galería incluye tarjetas de ejemplo para reemplazar por trabajos reales.
+- TalentoGo, Mi Mundo, Feedback Hub y VIY Code se muestran como EN DESARROLLO.
+- El formulario prepara un correo, no envía información a un servidor.
+- Antes de publicar, reemplaza CONTACTO@TUCORREO.COM en script.js por tu correo real.
+- Guarda una copia de los archivos actuales antes de reemplazarlos.
