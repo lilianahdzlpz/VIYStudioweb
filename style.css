@@ -14,3 +14,90 @@
 @media(max-width:760px){html{scroll-padding-top:76px}section{padding:66px 0}.container{width:calc(100% - 30px)}.navbar{width:calc(100% - 28px);min-height:68px;gap:10px}.brand-mark{width:40px;height:40px}.brand-name{font-size:1rem}.menu-toggle{display:inline-flex;flex:0 0 48px}.nav-links{position:fixed;top:68px;left:12px;right:12px;z-index:101;display:flex;flex-direction:column;align-items:stretch;gap:4px;max-height:calc(100svh - 84px);overflow-y:auto;padding:14px;background:#0c0713fa;border:1px solid #a855ff66;border-radius:20px;box-shadow:0 18px 45px #0009,0 0 25px #a855ff20;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s}.nav-links.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}.nav-links a{min-height:46px;padding:10px 13px;font-size:1rem;border-radius:12px}.nav-links a:hover{background:#a855ff1a}.hero{min-height:auto;padding:56px 0 62px}.hero-grid{width:calc(100% - 30px);grid-template-columns:1fr;gap:20px}.hero h1{font-size:clamp(2.6rem,12vw,4.3rem)}.hero-art{min-height:270px}.hero-emblem{width:min(68%,270px)}.section-heading{text-align:left;margin-bottom:30px}.section-heading p{margin-inline:0}.about-grid,.contact-grid{grid-template-columns:1fr;gap:28px}.footer-inner{width:calc(100% - 30px);align-items:flex-start;flex-direction:column}}
 @media(max-width:480px){.cards-grid,.portfolio-grid,.apps-grid{grid-template-columns:1fr}.hero-actions{flex-direction:column;align-items:stretch}.hero-actions .btn{width:100%}.hero-art{min-height:235px}.hero-emblem{width:235px}.project-visual{aspect-ratio:16/9}.glass-card,.portfolio-card,.app-card{padding:21px}h2{font-size:2rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* VIY STUDIO — acabado negro profundo + neón eléctrico */
+:root{
+  --fondo:#020204;
+  --tarjeta:#08080d;
+  --claro:#0c0b12;
+  --borde:rgba(168,85,255,.34);
+}
+html{background:#020204}
+body{
+  background:
+    radial-gradient(ellipse at 12% 18%,rgba(168,85,255,.075),transparent 27%),
+    radial-gradient(ellipse at 88% 42%,rgba(255,46,170,.065),transparent 25%),
+    radial-gradient(ellipse at 48% 88%,rgba(40,170,255,.045),transparent 30%),
+    #020204;
+  isolation:isolate;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.32;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 700'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M95 40l-13 36 18-5-23 52' stroke='%23ff2eaa' stroke-width='1.5' opacity='.55'/%3E%3Cpath d='M770 100l-16 42 20-7-26 58' stroke='%23a855ff' stroke-width='1.6' opacity='.55'/%3E%3Cpath d='M450 520l-10 28 16-5-19 43' stroke='%2328aaff' stroke-width='1.4' opacity='.42'/%3E%3Cpath d='M210 330l-8 22 13-4-16 34' stroke='%23a855ff' stroke-width='1' opacity='.35'/%3E%3Cpath d='M690 610l-9 25 14-4-18 39' stroke='%23ff2eaa' stroke-width='1' opacity='.4'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: min(900px,100vw) auto;
+  background-repeat:repeat;
+  background-position:center top;
+}
+.site-header{background:rgba(2,2,4,.92);border-bottom-color:rgba(168,85,255,.25)}
+.section-alt{background:linear-gradient(180deg,rgba(8,7,13,.78),rgba(2,2,4,.72));border-block-color:rgba(168,85,255,.13)}
+.glass-card,.portfolio-card,.app-card,.skills-panel,.contact-panel{
+  background:linear-gradient(145deg,rgba(12,10,18,.97),rgba(4,4,8,.98));
+  border:1px solid rgba(168,85,255,.48);
+  box-shadow:0 10px 34px rgba(0,0,0,.55),inset 0 0 22px rgba(168,85,255,.035);
+}
+.glass-card:nth-child(3n+1),.portfolio-card:nth-child(3n+1),.app-card:nth-child(3n+1){border-color:rgba(255,46,170,.52)}
+.glass-card:nth-child(3n+2),.portfolio-card:nth-child(3n+2),.app-card:nth-child(3n+2){border-color:rgba(168,85,255,.55)}
+.glass-card:nth-child(3n),.portfolio-card:nth-child(3n),.app-card:nth-child(3n){border-color:rgba(40,170,255,.48)}
+.glass-card:hover,.portfolio-card:hover,.app-card:hover{
+  border-color:var(--rosa);
+  box-shadow:0 16px 42px rgba(0,0,0,.65),0 0 12px rgba(255,46,170,.22),0 0 30px rgba(168,85,255,.16);
+}
+.glass-card:before,.portfolio-card:before,.app-card:before{
+  height:2px;opacity:.9;
+  background:linear-gradient(90deg,transparent,var(--rosa),var(--morado),var(--azul),transparent);
+  box-shadow:0 0 12px rgba(255,46,170,.55);
+}
+.card-icon,.app-icon{
+  background:linear-gradient(145deg,rgba(255,46,170,.12),rgba(168,85,255,.14),rgba(40,170,255,.1));
+  border-color:rgba(255,117,209,.55);
+  box-shadow:0 0 16px rgba(168,85,255,.13),inset 0 0 12px rgba(255,46,170,.06);
+}
+.project-visual{background-color:#050509;border-color:rgba(168,85,255,.35);box-shadow:inset 0 0 25px rgba(168,85,255,.08)}
+.skills-list li{background:rgba(10,8,15,.9);border-color:rgba(168,85,255,.38);box-shadow:inset 0 0 12px rgba(168,85,255,.035)}
+.contact-highlight{background:rgba(8,7,13,.9);border-color:rgba(255,46,170,.32)}
+.contact-panel{background:linear-gradient(145deg,rgba(12,8,18,.96),rgba(4,4,8,.98))}
+.btn-primary{box-shadow:0 0 16px rgba(255,46,170,.22),0 8px 26px rgba(0,0,0,.4)}
+.btn-primary:hover{box-shadow:0 0 22px rgba(255,46,170,.42),0 0 34px rgba(168,85,255,.2)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+
+/* Identidad oficial VIY: negro obsidiana, corona dorada y neón rosa/violeta/azul */
+:root{--fondo:#020204;--tarjeta:#08070b;--rosa:#ff16c8;--rosa-claro:#ff75df;--morado:#a52bff;--azul:#16aaff;--oro:#ffc34d}
+body{background:radial-gradient(ellipse at 50% 20%,rgba(113,22,140,.13),transparent 38%),radial-gradient(ellipse at 8% 68%,rgba(255,0,190,.055),transparent 25%),radial-gradient(ellipse at 92% 75%,rgba(0,136,255,.06),transparent 26%),#020204}
+body::before{opacity:.24}
+.brand-mark{width:48px;height:48px;object-fit:cover;object-position:center;border-radius:50%;border:1px solid rgba(255,91,220,.5);box-shadow:0 0 10px #ff16c855,0 0 18px #782dff44}
+.hero-logo-art{min-height:clamp(300px,42vw,540px);padding:8px;isolation:isolate}
+.logo-aura{position:absolute;inset:9%;border-radius:50%;background:radial-gradient(ellipse,rgba(255,0,196,.22),rgba(128,0,255,.13) 42%,rgba(0,150,255,.1) 62%,transparent 74%);filter:blur(24px);z-index:-2}
+.logo-orbit{position:absolute;inset:14% 1%;border:2px solid transparent;border-radius:50%;transform:rotate(-12deg);background:linear-gradient(#020204,#020204) padding-box,linear-gradient(90deg,#ff16c8,#a52bff,#16aaff,#ff16c8) border-box;filter:drop-shadow(0 0 9px #b52aff);z-index:-1}
+.hero-logo{width:min(100%,510px);max-height:560px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 0 12px rgba(255,20,205,.22)) drop-shadow(0 0 26px rgba(98,40,255,.2));mix-blend-mode:screen;mask-image:radial-gradient(ellipse 72% 73% at 50% 50%,#000 65%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 72% 73% at 50% 50%,#000 65%,transparent 100%)}
+.logo-spark{position:absolute;color:#ff5cde;text-shadow:0 0 9px currentColor,0 0 20px currentColor;font-size:1.8rem;animation:sparkPulse 3s ease-in-out infinite}
+.spark-a{top:12%;left:8%}.spark-b{right:8%;top:25%;color:#39baff;animation-delay:1s}.spark-c{bottom:12%;right:17%;color:#ffbe4d;animation-delay:1.6s}
+@keyframes sparkPulse{50%{opacity:.45;transform:scale(.78)}}
+.glass-card,.portfolio-card,.app-card,.skills-panel,.contact-panel{background:linear-gradient(145deg,#0d0911,#040407);border-color:rgba(255,40,211,.42);box-shadow:0 12px 34px #000b,inset 0 0 20px rgba(165,43,255,.045)}
+.glass-card:nth-child(3n+2),.portfolio-card:nth-child(3n+2),.app-card:nth-child(3n+2){border-color:rgba(255,195,77,.35)}
+.glass-card:nth-child(3n),.portfolio-card:nth-child(3n),.app-card:nth-child(3n){border-color:rgba(22,170,255,.42)}
+.section-kicker{color:#ff8be4}.gradient-text{background-image:linear-gradient(100deg,#ff35ce,#c04bff,#26baff,#ffc34d);background-size:250% auto}
+.store-toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:22px}.store-note{color:#d8c9e4;font-weight:750;letter-spacing:.05em}.store-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.store-empty{grid-column:1/-1;text-align:center;padding:42px 20px;border:1px dashed rgba(255,68,220,.5);border-radius:22px;background:radial-gradient(ellipse at 50% 0,rgba(164,42,255,.13),transparent 65%),#07060a}
+.store-empty>span{font-size:2.5rem;color:#ff70df;text-shadow:0 0 20px #ff16c8}.store-empty h3{color:#fff}.store-card{overflow:hidden;border:1px solid rgba(255,46,205,.4);border-radius:20px;background:linear-gradient(145deg,#100a15,#050508);box-shadow:0 10px 30px #0009,0 0 16px #a52bff12}.store-photo{width:100%;aspect-ratio:4/3;object-fit:cover;background:#0a0710}.store-info{padding:18px}.store-info h3{color:white;margin-bottom:7px}.store-price{font-weight:900;color:#ffd36b;font-size:1.15rem;text-shadow:0 0 12px #ffc34d33}.store-info p{font-size:.9rem;min-height:44px}.cart-panel{margin-top:24px;padding:22px;border:1px solid rgba(255,46,205,.5);border-radius:20px;background:#09070d;box-shadow:0 0 30px #a52bff20}.cart-head,.admin-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.cart-head h3{margin:0}.cart-line{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid #ffffff18;color:#eee}.cart-total{font-weight:900;color:#ffd36b;text-align:right;padding:16px 0}.icon-close{width:42px;height:42px;border-radius:12px;background:#110a18;border:1px solid #c04bff;color:white;font-size:1.7rem;cursor:pointer}.admin-launch{margin-top:12px;padding:8px 12px;border:1px solid #a52bff77;border-radius:10px;color:#e6caff;background:#0b0710;cursor:pointer}.admin-backdrop{position:fixed;inset:0;z-index:300;background:#000d;display:grid;place-items:center;padding:16px;overflow:auto}.admin-backdrop[hidden],.cart-panel[hidden]{display:none}.admin-panel{width:min(100%,700px);max-height:92vh;overflow:auto;padding:24px;border:1px solid #c04bff88;border-radius:22px;background:#08060c;box-shadow:0 0 40px #a52bff35}.admin-panel h2{font-size:1.8rem;margin:0}.admin-warning{padding:12px;border-left:3px solid #ffc34d;background:#ffc34d0d;font-size:.85rem}.admin-form{display:grid;gap:12px;margin:20px 0}.admin-form label{display:grid;gap:6px;color:#eee;font-size:.9rem;font-weight:700}.admin-form input,.admin-form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #a52bff66;background:#100b15;color:white}.admin-product-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #ffffff20;color:#eee}.admin-product-row button{background:#2a0b20;color:#ff9cdb;border:1px solid #ff16c855;border-radius:8px;padding:7px 10px}
+@media(max-width:760px){.hero-logo-art{min-height:300px}.hero-logo{max-width:360px}.store-grid{grid-template-columns:1fr 1fr}.store-toolbar{align-items:flex-start;flex-direction:column}}
+@media(max-width:480px){.store-grid{grid-template-columns:1fr}.admin-panel{padding:17px}.hero-logo-art{min-height:270px}}
