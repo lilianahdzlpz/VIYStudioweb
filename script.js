@@ -24,7 +24,7 @@ const anio=document.getElementById("current-year");if(anio)anio.textContent=new 
 "use strict";
 const STORAGE_KEY="viystudio_products_v1";
 const WHATSAPP_NUMBER=""; // Escribe aquí tu número con código de país, sin + ni espacios.
-const ADMIN_PASSWORD="VIY-cambia-esta-clave"; // Cambia esta clave antes de usar la administración.
+const ADMIN_PASSWORD="VIYStich1994"; // Cambia esta clave antes de usar la administración.
 const grid=document.getElementById("store-grid");
 const admin=document.getElementById("admin-backdrop");
 const cartPanel=document.getElementById("cart-panel");
