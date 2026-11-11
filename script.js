@@ -12,7 +12,7 @@ const PAYMENT_URL = "https://link.mercadopago.com.mx/viystudio";
 /* Agrega tu número cuando estés lista.
    Formato: código de país + número, sin + ni espacios.
    Ejemplo de formato: 5215512345678 */
-const WHATSAPP_NUMBER = "";
+const WHATSAPP_NUMBER = "525518485945";
 
 /* ==========================================
    MENÚ DE NAVEGACIÓN
