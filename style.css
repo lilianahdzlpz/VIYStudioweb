@@ -84,7 +84,7 @@ body::before{
 :root{--fondo:#020204;--tarjeta:#08070b;--rosa:#ff16c8;--rosa-claro:#ff75df;--morado:#a52bff;--azul:#16aaff;--oro:#ffc34d}
 body{background:radial-gradient(ellipse at 50% 20%,rgba(113,22,140,.13),transparent 38%),radial-gradient(ellipse at 8% 68%,rgba(255,0,190,.055),transparent 25%),radial-gradient(ellipse at 92% 75%,rgba(0,136,255,.06),transparent 26%),#020204}
 body::before{opacity:.24}
-.brand-mark{width:48px;height:48px;object-fit:cover;object-position:center;border-radius:50%;border:1px solid rgba(255,91,220,.5);box-shadow:0 0 10px #ff16c855,0 0 18px #782dff44}
+.brand-mark{width:48px;height:48px;object-fit:contain;object-position:center;border-radius:9px;border:1px solid rgba(255,91,220,.5);background:#030208;box-shadow:0 0 10px #ff16c855,0 0 18px #782dff44}
 .hero-logo-art{min-height:clamp(300px,42vw,540px);padding:8px;isolation:isolate}
 .logo-aura{position:absolute;inset:9%;border-radius:50%;background:radial-gradient(ellipse,rgba(255,0,196,.22),rgba(128,0,255,.13) 42%,rgba(0,150,255,.1) 62%,transparent 74%);filter:blur(24px);z-index:-2}
 .logo-orbit{position:absolute;inset:14% 1%;border:2px solid transparent;border-radius:50%;transform:rotate(-12deg);background:linear-gradient(#020204,#020204) padding-box,linear-gradient(90deg,#ff16c8,#a52bff,#16aaff,#ff16c8) border-box;filter:drop-shadow(0 0 9px #b52aff);z-index:-1}
@@ -102,6 +102,391 @@ body::before{opacity:.24}
 @media(max-width:760px){.hero-logo-art{min-height:300px}.hero-logo{max-width:360px}.store-grid{grid-template-columns:1fr 1fr}.store-toolbar{align-items:flex-start;flex-direction:column}}
 @media(max-width:480px){.store-grid{grid-template-columns:1fr}.admin-panel{padding:17px}.hero-logo-art{min-height:270px}}
 
-/* Bolsa de trabajo */
-.jobs-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:28px 0}.job-card{padding:24px}.job-card h3{margin:12px 0 8px}.job-card p{min-height:72px}.jobs-apply{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:start;margin-top:30px;padding:clamp(20px,4vw,36px);border:1px solid rgba(255,46,205,.4);border-radius:22px;background:linear-gradient(145deg,#100a15,#050508);box-shadow:0 12px 34px #0009,0 0 24px #a52bff16}.jobs-apply h3{font-size:1.5rem}.jobs-apply .contact-form{display:grid;gap:13px}.jobs-apply label{display:grid;gap:7px;color:#eee;font-weight:700;font-size:.9rem}.jobs-apply input,.jobs-apply select,.jobs-apply textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #a52bff66;background:#100b15;color:white;font:inherit}.jobs-apply textarea{min-height:120px;resize:vertical}.jobs-apply select option{background:#100b15;color:white}
-@media(max-width:760px){.jobs-grid{grid-template-columns:1fr}.job-card p{min-height:0}.jobs-apply{grid-template-columns:1fr}}
+
+/* FONDO REAL DE REFERENCIA VIY: imagen neón + movimiento suave */
+html, body { background-color: #020105 !important; }
+body { position: relative; isolation: isolate; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: -3vh -3vw;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .88;
+  background-image: linear-gradient(rgba(2,1,8,.18), rgba(2,1,8,.34)), url("fondo-viy-neon.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform: scale(1.035);
+  animation: viyReferenceDrift 34s ease-in-out infinite alternate;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .38;
+  background:
+    radial-gradient(ellipse at 18% 18%, rgba(255,0,210,.20), transparent 34%),
+    radial-gradient(ellipse at 82% 76%, rgba(0,145,255,.20), transparent 38%),
+    linear-gradient(115deg, transparent 35%, rgba(255,35,215,.08) 48%, transparent 58%);
+  background-size: 150% 150%;
+  animation: viyColorWave 19s ease-in-out infinite alternate;
+}
+@keyframes viyReferenceDrift {
+  0% { background-position: 48% 45%; transform: scale(1.035); }
+  100% { background-position: 54% 55%; transform: scale(1.09); }
+}
+@keyframes viyColorWave {
+  0% { background-position: 0% 30%; opacity: .25; }
+  100% { background-position: 100% 70%; opacity: .48; }
+}
+/* Corazones luminosos que complementan la imagen original */
+.viy-floating-hearts {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  color: #ff4bd8;
+  text-shadow: 0 0 7px #ff2ecb, 0 0 18px #b42cff, 0 0 28px #ff2ecb;
+}
+.viy-floating-hearts span {
+  position: absolute;
+  font-family: Georgia, serif;
+  font-size: clamp(22px, 3vw, 42px);
+  animation: viyHeartFloat 8s ease-in-out infinite;
+  opacity: .76;
+}
+.viy-floating-hearts span:nth-child(1) { left: 5%; top: 24%; animation-delay: -2s; }
+.viy-floating-hearts span:nth-child(2) { right: 8%; top: 39%; color: #c75cff; animation-delay: -5s; }
+.viy-floating-hearts span:nth-child(3) { left: 16%; bottom: 13%; color: #ff59d9; animation-delay: -3s; }
+.viy-floating-hearts span:nth-child(4) { right: 19%; bottom: 18%; color: #42bfff; animation-delay: -6s; }
+@keyframes viyHeartFloat {
+  0%,100% { transform: translateY(0) scale(.92); opacity: .45; }
+  50% { transform: translateY(-18px) scale(1.08); opacity: .9; }
+}
+/* Superficies translúcidas: dejan ver el fondo en todas las secciones */
+.section-alt { background: linear-gradient(180deg, rgba(5,3,12,.52), rgba(3,2,8,.40)) !important; }
+.site-header { background: rgba(3,2,9,.82) !important; }
+.glass-card, .portfolio-card, .app-card, .skills-panel, .contact-panel,
+.store-empty, .store-card, .cart-panel {
+  background: linear-gradient(145deg, rgba(10,5,20,.84), rgba(3,3,12,.88)) !important;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+@media (max-width:760px) {
+  body::before { background-position: center; opacity: .72; }
+  .viy-floating-hearts span { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after, .viy-floating-hearts span { animation: none !important; }
+}
+
+/* FONDO NEÓN CON MOVIMIENTO SUAVE */
+html, body { background: #000 !important; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: -2%;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 1;
+  background-image: url("fondo-viy-neon.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+  animation: viyBackgroundMotion 28s ease-in-out infinite alternate;
+}
+body::after {
+  content: "";
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 20% 25%, rgba(255,35,190,.12), transparent 38%),
+    radial-gradient(ellipse at 80% 75%, rgba(35,150,255,.13), transparent 40%);
+  background-size: 160% 160%;
+  animation: viyAmbientGlow 16s ease-in-out infinite alternate;
+}
+@keyframes viyBackgroundMotion {
+  0% { background-position: 46% 45%; transform: scale(1.03); }
+  100% { background-position: 54% 55%; transform: scale(1.10); }
+}
+@keyframes viyAmbientGlow {
+  0% { background-position: 0% 20%; opacity: .55; }
+  100% { background-position: 100% 80%; opacity: 1; }
+}
+/* VIY en neón multicolor y STUDIO en dorado */
+.brand-name { color: #ff4bd8; text-shadow: 0 0 8px rgba(255,55,210,.8), 0 0 18px rgba(168,85,255,.55); }
+.brand-name b, .footer-brand span {
+  color: #f5c75e;
+  background: linear-gradient(100deg, #fff0a8, #d99a27, #fff3b0, #c98719);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(245,190,65,.55);
+}
+@media (max-width:760px) {
+  body::before { background-position: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after, .viy-floating-hearts span { animation: none !important; }
+}
+
+/* ✦ Acabado luminoso VIY Studio: brillo tipográfico y bordes con luz en movimiento */
+.brand-name { display:inline-flex; align-items:baseline; gap:7px; }
+.brand-name .brand-viy {
+  font-weight:1000; letter-spacing:.055em;
+  background:linear-gradient(105deg,#fff 0%,#ff65d4 24%,#b66cff 52%,#55d8ff 78%,#fff 100%);
+  background-size:230% auto; -webkit-background-clip:text; background-clip:text;
+  color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 5px #ff39c788) drop-shadow(0 0 12px #a855ff66);
+  animation:viyWordGlow 7s ease-in-out infinite;
+}
+.brand-name b, .footer-brand span {
+  font-size:.88em; letter-spacing:.13em; font-weight:750;
+  background:linear-gradient(100deg,#f8e8bd,#e9c98a,#fff1d1);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 5px #eacb8a44);
+  text-shadow:none; animation:studioSoftGlow 5s ease-in-out infinite alternate;
+}
+.hero h1, h2, h3, .section-kicker, .eyebrow, .brand-name, .nav-links a,
+.glass-card p, .portfolio-card p, .app-card p, .contact-highlight,
+.skills-list li, .site-footer, .btn, .card-link {
+  text-shadow:0 0 10px rgba(191,137,255,.10);
+}
+.hero h1 { text-shadow:0 0 22px rgba(168,85,255,.13); }
+.glass-card, .portfolio-card, .app-card, .skills-panel, .contact-panel, .contact-highlight {
+  isolation:isolate;
+}
+.glass-card::after, .portfolio-card::after, .app-card::after {
+  content:""; position:absolute; inset:0; padding:1px; border-radius:inherit;
+  background:conic-gradient(from var(--viy-angle,0deg), transparent 0 48%,#ff58d9 58%,#63dfff 67%,#a855ff 76%,transparent 88% 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  opacity:.48; pointer-events:none; animation:viyBorderLight 8s linear infinite;
+}
+.glass-card:hover::after, .portfolio-card:hover::after, .app-card:hover::after { opacity:.95; animation-duration:3.5s; }
+.contact-highlight { position:relative; overflow:hidden; border-color:#c58cff44; transition:transform .25s,border-color .25s,box-shadow .25s; }
+.contact-highlight::after {
+  content:""; position:absolute; inset:0; border-radius:inherit; padding:1px;
+  background:conic-gradient(from var(--viy-angle,0deg),transparent 0 55%,#ff61d5 65%,#66dcff 74%,#a855ff 83%,transparent 94%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  opacity:.75; pointer-events:none; animation:viyBorderLight 6s linear infinite;
+}
+.contact-highlight:hover { transform:translateY(-3px); border-color:#ff6bd8aa; box-shadow:0 0 24px #a855ff2b; }
+.contact-link { color:inherit; text-decoration:none; cursor:pointer; }
+.contact-symbol { width:54px; height:54px; flex:0 0 54px; display:grid; place-items:center; margin:0; border-radius:16px; }
+.contact-symbol svg { width:29px; height:29px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+.mail-symbol { color:#ff8bdb; background:linear-gradient(135deg,#ff42c52b,#a855ff28); box-shadow:inset 0 0 15px #ff4dc51c,0 0 16px #ff42c51a; }
+.whatsapp-symbol { color:#61efad; background:linear-gradient(135deg,#20d87927,#00a8841d); box-shadow:inset 0 0 15px #20d8791c,0 0 16px #20d87916; }
+.contact-copy { display:grid; gap:3px; min-width:0; }
+.contact-copy strong { color:#fff; font-size:1rem; }
+.contact-copy>span { color:#f2dfff; font-weight:700; overflow-wrap:anywhere; }
+.contact-copy small { color:var(--suave); font-size:.82rem; }
+.contact-arrow { margin-left:auto; color:#8de7ff; font-size:1.3rem; }
+@keyframes viyBorderLight { to { --viy-angle:360deg; } }
+@keyframes viyWordGlow { 0%,100% { background-position:0% center; filter:drop-shadow(0 0 5px #ff39c777) drop-shadow(0 0 12px #a855ff55); } 50% { background-position:100% center; filter:drop-shadow(0 0 8px #ff39c7aa) drop-shadow(0 0 17px #55d8ff77); } }
+@keyframes studioSoftGlow { from { opacity:.88; } to { opacity:1; } }
+@media (prefers-reduced-motion:reduce) {
+  .brand-name .brand-viy,.brand-name b,.glass-card::after,.portfolio-card::after,.app-card::after,.contact-highlight::after { animation:none !important; }
+}
+
+
+/* VIY Studio — corrección de botones y luz perimetral animada */
+@property --viy-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.glass-card, .portfolio-card, .app-card, .skills-panel, .contact-panel,
+.contact-highlight, .store-card, .cart-panel {
+  position: relative;
+  isolation: isolate;
+}
+.glass-card::after, .portfolio-card::after, .app-card::after,
+.skills-panel::after, .contact-panel::after, .contact-highlight::after,
+.store-card::after, .cart-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--viy-angle),
+    transparent 0deg, transparent 235deg,
+    #ff42cf 270deg, #ffffff 285deg, #39d9ff 305deg,
+    #a855ff 330deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: .9;
+  pointer-events: none;
+  animation: viyBorderSweep 5s linear infinite;
+  z-index: 2;
+}
+.glass-card:hover::after, .portfolio-card:hover::after,
+.app-card:hover::after, .contact-highlight:hover::after {
+  opacity: 1;
+  animation-duration: 2.5s;
+}
+@keyframes viyBorderSweep {
+  to { --viy-angle: 360deg; }
+}
+/* Tarjetas de contacto compactas, como en la referencia */
+.contact-highlight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 104px;
+  margin-top: 14px;
+  padding: 13px;
+  border: 1px solid rgba(194,119,255,.45);
+  border-radius: 17px;
+  background: linear-gradient(145deg,rgba(12,6,22,.91),rgba(3,3,12,.94));
+  box-shadow: 0 8px 24px rgba(0,0,0,.24), inset 0 0 18px rgba(168,85,255,.06);
+  transition: transform .25s, box-shadow .25s;
+}
+.contact-highlight:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(255,46,170,.18), 0 0 26px rgba(40,170,255,.12);
+}
+.contact-symbol {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border-radius: 12px;
+}
+.contact-symbol svg { width: 22px; height: 22px; }
+.contact-copy { gap: 2px; }
+.contact-copy strong { font-size: .88rem; }
+.contact-copy>span { font-size: .78rem; }
+.contact-copy small { font-size: .7rem; line-height: 1.35; }
+.contact-arrow { font-size: 1.1rem; }
+@media (max-width:760px) {
+  .contact-grid { display:flex; flex-direction:column; gap:18px; }
+  .contact-grid > .contact-panel { order:1; width:100%; }
+  .contact-grid > div:first-child { order:2; width:100%; }
+  .contact-grid > div:first-child {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+  .contact-grid > div:first-child > h3,
+  .contact-grid > div:first-child > p { grid-column:1/-1; margin-bottom:0; }
+  .contact-grid > div:first-child > .contact-highlight {
+    margin:4px 0 0;
+    min-width:0;
+    min-height:126px;
+    align-items:flex-start;
+    flex-direction:column;
+    gap:7px;
+  }
+  .contact-copy { min-width:0; }
+  .contact-copy>span { overflow-wrap:anywhere; }
+  .contact-arrow { display:none; }
+}
+@media (max-width:390px) {
+  .contact-grid > div:first-child { grid-template-columns:1fr; }
+  .contact-grid > div:first-child > .contact-highlight {
+    min-height:92px;
+    flex-direction:row;
+    align-items:center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glass-card::after, .portfolio-card::after, .app-card::after,
+  .skills-panel::after, .contact-panel::after, .contact-highlight::after,
+  .store-card::after, .cart-panel::after { animation:none !important; }
+}
+
+
+/* Accesos de WhatsApp y correo dentro de la tarjeta del formulario */
+.contact-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 4px;
+}
+.contact-actions .contact-highlight {
+  min-width: 0;
+  min-height: 100px;
+  margin: 0;
+  padding: 13px;
+  border-radius: 15px;
+  text-decoration: none;
+}
+.contact-actions .contact-copy strong { font-size: .9rem; }
+.contact-actions .contact-copy>span { font-size: .78rem; }
+.contact-actions .contact-copy small { font-size: .7rem; }
+.contact-actions .contact-symbol {
+  width: 42px;
+  height: 42px;
+  flex-basis: 42px;
+}
+.contact-actions .contact-symbol svg { width: 23px; height: 23px; }
+.contact-actions .contact-link:hover {
+  transform: translateY(-3px);
+  border-color: #ff63d1;
+  box-shadow: 0 0 18px #ff42c533, 0 0 20px #28aaff22;
+}
+@media (max-width:480px) {
+  .contact-actions { grid-template-columns: 1fr; }
+  .contact-actions .contact-highlight { min-height: 84px; flex-direction: row; align-items: center; }
+}
+
+
+/* CORRECCIÓN ANDROID/CHROME: fondo continuo y estable al desplazarse */
+html, body {
+  min-height: 100%;
+  background-color: #020105 !important;
+}
+body {
+  position: relative;
+  isolation: isolate;
+  background-image: none !important;
+}
+/* Un solo fondo fijo: sin transformaciones ni animaciones que provoquen
+   saltos de composición en Chrome móvil durante el scroll. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .88;
+  transform: none !important;
+  animation: none !important;
+  background-image:
+    linear-gradient(rgba(2,1,8,.18), rgba(2,1,8,.34)),
+    url("fondo-viy-neon.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  transform: none !important;
+  animation: none !important;
+  background:
+    radial-gradient(ellipse at 20% 25%, rgba(255,35,190,.10), transparent 38%),
+    radial-gradient(ellipse at 80% 75%, rgba(35,150,255,.11), transparent 40%);
+}
+@media (max-width: 760px) {
+  body::before {
+    background-position: center center;
+    background-size: auto 100vh;
+    background-repeat: repeat-y;
+  }
+}

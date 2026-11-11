@@ -1,35 +1,130 @@
-</div></div></section>
-</div></div></section>
-<aside class="cart-panel" id="cart-panel" hidden>
-  <aside class="cart-panel" id="cart-panel" hidden>
-  <div class="cart-head">
-    <h3>Tu carrito</h3>
-    <button class="icon-close" id="cart-close" type="button"
-      aria-label="Cerrar carrito">×</button>
-  </div>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#020105">
+  <meta name="description" content="VIY Studio: creatividad, diseño digital, invitaciones, edición, desarrollo web y productos personalizados.">
+  <title>VIY Studio | Creatividad que se convierte en experiencias</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="viy-floating-hearts" aria-hidden="true"><span>♡</span><span>♡</span><span>♡</span><span>♡</span></div>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="VIY Studio, inicio">
+        <img class="brand-mark" src="logo-viy.png" alt="Logo VIY Studio">
+        <span class="brand-name"><span class="brand-viy">VIY</span> <b>Studio</b></span>
+      </a>
+      <ul class="nav-links" id="menu-principal">
+        <li><a href="#inicio">⌂ Inicio</a></li>
+        <li><a href="#servicios">⚙ Servicios</a></li>
+        <li><a href="#portafolio">▣ Portafolio</a></li>
+        <li><a href="#habilidades">★ Habilidades</a></li>
+        <li><a href="#apps">▦ Aplicaciones</a></li>
+        <li><a href="#tienda">🛒 Tienda</a></li>
+        <li><a href="#contacto">✉ Contacto</a></li>
+      </ul>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"><span class="heart-icon">♡</span></button>
+    </nav>
+  </header>
 
-  <div id="cart-items"></div>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Creatividad · Diseño · Tecnología</p>
+          <h1>Ideas que se convierten en <span class="gradient-text">experiencias</span></h1>
+          <p class="hero-description">Bienvenido a VIY Studio, un espacio creativo donde el diseño digital, la edición y la programación se unen para dar vida a nuevas ideas.</p>
+          <p class="slogan"><em>«Aprendemos, creamos y soñamos sin límites; porque nunca es tarde para crecer y hacer realidad lo extraordinario».</em></p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#portafolio">✧ Explorar portafolio →</a>
+            <a class="btn btn-secondary" href="#contacto">♡ Hablemos</a>
+          </div>
+          <p class="hero-note"><span class="status-dot"></span> Construyendo ideas con creatividad y constancia</p>
+        </div>
+        <div class="hero-art hero-logo-art" aria-label="Emblema VIY Studio">
+          <div class="logo-orbit"></div>
+          <img class="hero-logo" src="logo-viy.png" alt="Logotipo VIY Studio con corona y corazón">
+          <span class="logo-spark spark-a">✦</span><span class="logo-spark spark-b">✧</span><span class="logo-spark spark-c">✦</span>
+        </div>
+      </div>
+    </section>
 
-  <div class="cart-total" id="cart-total">
-    Total: $0.00 MXN
-  </div>
+    <section class="section-alt" id="servicios">
+      <div class="container">
+        <div class="section-heading"><p class="section-kicker">Lo que puedo crear</p><h2>Servicios <span class="gradient-text">creativos</span></h2><p>Soluciones visuales y digitales para dar forma a ideas personales, proyectos y marcas.</p></div>
+        <div class="cards-grid">
+          <article class="glass-card"><span class="card-icon">✧</span><h3>Diseño digital</h3><p>Diseños visuales para proyectos, redes sociales, marcas y contenido digital.</p><a class="card-link" href="#contacto">Consultar servicio →</a></article>
+          <article class="glass-card"><span class="card-icon">♡</span><h3>Invitaciones personalizadas</h3><p>Invitaciones creativas para celebraciones, eventos y momentos especiales.</p><a class="card-link" href="#contacto">Consultar servicio →</a></article>
+          <article class="glass-card"><span class="card-icon">▷</span><h3>Edición y contenido</h3><p>Composición visual y contenido para comunicar ideas con personalidad.</p><a class="card-link" href="#contacto">Consultar servicio →</a></article>
+          <article class="glass-card"><span class="card-icon">&lt;/&gt;</span><h3>Diseño web</h3><p>Páginas web adaptables, con estructura clara y experiencia intuitiva.</p><a class="card-link" href="#contacto">Consultar servicio →</a></article>
+          <article class="glass-card"><span class="card-icon">✧</span><h3>Productos personalizados</h3><p>Detalles y regalos con un toque personal para cada ocasión.</p><a class="card-link" href="#contacto">Consultar servicio →</a></article>
+          <article class="glass-card"><span class="card-icon">∞</span><h3>Ideas a medida</h3><p>Hablemos de tu idea y trabajemos para convertirla en algo especial.</p><a class="card-link" href="#contacto">Cuéntame tu idea →</a></article>
+        </div>
+      </div>
+    </section>
 
-  <a class="btn btn-primary"
-     href="https://link.mercadopago.com.mx/viystudio"
-     target="_blank"
-     rel="noopener noreferrer">
-     Pagar con Mercado Pago ↗
-  </a>
+    <section id="portafolio">
+      <div class="container">
+        <div class="section-heading"><p class="section-kicker">Ideas en construcción</p><h2>Portafolio <span class="gradient-text">creativo</span></h2><p>Un espacio para presentar trabajos, prácticas y proyectos reales.</p></div>
+        <div class="portfolio-toolbar" role="group" aria-label="Filtrar portafolio">
+          <button class="filter-btn active" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+          <button class="filter-btn" type="button" data-filter="diseno" aria-pressed="false">Diseño</button>
+          <button class="filter-btn" type="button" data-filter="codigo" aria-pressed="false">Web y código</button>
+          <button class="filter-btn" type="button" data-filter="creatividad" aria-pressed="false">Creatividad</button>
+        </div>
+        <div class="portfolio-grid">
+          <article class="portfolio-card" data-category="codigo"><div class="project-visual visual-purple"><span>&lt;/&gt;</span><strong>VIY STUDIO</strong><small>PORTAFOLIO WEB</small></div><div class="project-meta"><span class="badge">Web y código</span></div><h3>VIY Studio web</h3><p>Sitio y espacio de presentación de los proyectos creativos y digitales de VIY Studio.</p><a class="card-link" href="https://github.com/lilianahdzlpz/VIYStudioweb" target="_blank" rel="noopener">Ver repositorio ↗</a></article>
+          <article class="portfolio-card" data-category="codigo"><div class="project-visual visual-blue"><span>☁</span><strong>NUBE DB</strong><small>PROYECTO EN DESARROLLO</small></div><div class="project-meta"><span class="badge">Web y código</span></div><h3>Nube DB</h3><p>Proyecto tecnológico en desarrollo para explorar almacenamiento y herramientas digitales.</p><a class="card-link" href="https://github.com/lilianahdzlpz/nube-db" target="_blank" rel="noopener">Ver repositorio ↗</a></article>
+          <article class="portfolio-card" data-category="codigo"><div class="project-visual visual-pink"><span>♡</span><strong>TU ESPACIO</strong><small>PROYECTO DIGITAL</small></div><div class="project-meta"><span class="badge">Web y código</span></div><h3>Tu espacio</h3><p>Proyecto personal de creación digital y desarrollo en evolución.</p><a class="card-link" href="https://github.com/lilianahdzlpz/VIYStudioespacio" target="_blank" rel="noopener">Ver repositorio ↗</a></article>
+          <article class="portfolio-card" data-category="creatividad"><div class="project-visual visual-purple"><span>♫</span><strong>MÚSICA LLAMADA</strong><small>PROYECTO EN DESARROLLO</small></div><div class="project-meta"><span class="badge">Creatividad</span></div><h3>Música llamada</h3><p>Proyecto experimental que combina ideas creativas y tecnología.</p><a class="card-link" href="https://github.com/lilianahdzlpz/llamada_music" target="_blank" rel="noopener">Ver repositorio ↗</a></article>
+          <article class="portfolio-card" data-category="diseno"><div class="project-visual visual-pink"><span>✧</span><strong>DISEÑO DIGITAL</strong><small>TRABAJOS CREATIVOS</small></div><div class="project-meta"><span class="badge">Diseño</span></div><h3>Diseños e invitaciones</h3><p>Espacio para mostrar piezas gráficas, invitaciones y productos personalizados realizados por VIY Studio.</p><a class="card-link" href="#contacto">Solicitar información →</a></article>
+          <article class="portfolio-card" data-category="creatividad"><div class="project-visual visual-blue"><span>✦</span><strong>PROCESO CREATIVO</strong><small>PRÁCTICAS Y EVIDENCIAS</small></div><div class="project-meta"><span class="badge">Creatividad</span></div><h3>Prácticas y evidencias</h3><p>Un lugar para incorporar capturas auténticas, avances y aprendizajes, sin presentar demostraciones como trabajos terminados.</p><a class="card-link" href="#contacto">Conocer más →</a></article>
+        </div>
+        <p class="portfolio-disclaimer">Los proyectos identificados como desarrollo o práctica se presentan con su estado real.</p>
+      </div>
+    </section>
 
-  <button class="btn btn-secondary"
-          id="checkout-button"
-          type="button">
-    Solicitar pedido por WhatsApp
-  </button>
+    <section class="section-alt" id="habilidades">
+      <div class="container about-grid">
+        <div><p class="section-kicker">Creatividad en evolución</p><h2>Habilidades <span class="gradient-text">y aprendizaje</span></h2><p>VIY Studio reúne creatividad, curiosidad y práctica constante. Cada proyecto es una oportunidad para aprender, mejorar y crear experiencias útiles.</p><div class="learning-note"><span>✦</span><p><strong>Aprender, crear y superar límites.</strong><br>El portafolio crecerá con trabajos y evidencias reales.</p></div></div>
+        <div class="skills-panel"><h3>Áreas creativas y digitales</h3><ul class="skills-list"><li>Diseño digital</li><li>Edición de imagen</li><li>Contenido visual</li><li>Invitaciones</li><li>Diseño web</li><li>HTML y CSS</li><li>JavaScript</li><li>Programación</li><li>Prototipos</li><li>Creatividad</li></ul></div>
+      </div>
+    </section>
 
-  <p class="form-note">
-    Al pagar, abre Mercado Pago e introduce el importe total
-    que aparece en tu carrito. El pago no se confirma
-    automáticamente en esta página.
-  </p>
-</aside>
+    <section id="apps">
+      <div class="container"><div class="section-heading"><p class="section-kicker">Ideas en construcción</p><h2>Aplicaciones <span class="gradient-text">digitales</span></h2><p>Proyectos en desarrollo: se muestran como avances, no como aplicaciones terminadas.</p></div>
+        <div class="apps-grid">
+          <article class="app-card"><span class="app-icon">◉</span><span class="app-status">En desarrollo</span><h3>TalentoGo</h3><p>Idea de plataforma para descubrir y conectar talentos.</p></article>
+          <article class="app-card"><span class="app-icon">◍</span><span class="app-status">En desarrollo</span><h3>Mi Mundo</h3><p>Concepto de espacio digital personal y creativo.</p></article>
+          <article class="app-card"><span class="app-icon">✉</span><span class="app-status">En desarrollo</span><h3>Feedback Hub</h3><p>Proyecto para organizar opiniones y comentarios.</p></article>
+          <article class="app-card"><span class="app-icon">&lt;/&gt;</span><span class="app-status">En desarrollo</span><h3>VIY code</h3><p>Espacio de experimentación y aprendizaje de programación.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt" id="tienda">
+      <div class="container"><div class="section-heading"><p class="section-kicker">Creaciones VIY</p><h2>Tienda <span class="gradient-text">digital</span></h2><p>Productos y diseños personalizados disponibles próximamente.</p></div>
+        <div class="store-toolbar"><span class="store-note">Explora las creaciones de VIY Studio</span><button class="btn btn-secondary" id="cart-open" type="button">🛒 Carrito (<span id="cart-count">0</span>)</button></div>
+        <div class="store-grid" id="store-grid"></div>
+        <button class="admin-launch" id="admin-launch" type="button">Administrar productos</button>
+        <div class="cart-panel" id="cart-panel" hidden><div class="cart-head"><h3>Tu carrito</h3><button class="icon-close" id="cart-close" type="button" aria-label="Cerrar carrito">×</button></div><div id="cart-items"></div><div class="cart-total" id="cart-total">Total: $0.00 MXN</div><a class="btn btn-primary" href="https://link.mercadopago.com.mx/viystudio" target="_blank" rel="noopener noreferrer">Pagar con Mercado Pago ↗</a><button class="btn btn-secondary" id="checkout-button" type="button">Solicitar pedido por WhatsApp</button><p class="form-note">El pago se realiza en Mercado Pago. La página no confirma automáticamente la recepción del pago.</p></div>
+      </div>
+    </section>
+<section class="section-alt" id="contacto">
+      <div class="container"><div class="section-heading"><p class="section-kicker">Conectemos</p><h2>Hagamos algo <span class="gradient-text">extraordinario</span></h2><p>Cuéntame qué necesitas y preparemos tu próximo proyecto.</p></div>
+        <div class="contact-grid"><div><h3>VIY Studio</h3><p>Creatividad, diseño y tecnología con corazón.</p></div>
+          <div class="contact-panel"><form class="contact-form" id="contact-form"><label>Tu nombre<input name="nombre" required maxlength="80" placeholder="¿Cómo te llamas?"></label><label>Tu correo<input name="email" type="email" required placeholder="correo@ejemplo.com"></label><label>Servicio que te interesa<select name="servicio" required><option value="">Selecciona una opción</option><option>Diseño digital</option><option>Invitación personalizada</option><option>Edición y contenido</option><option>Diseño web</option><option>Productos personalizados</option><option>Otro proyecto</option></select></label><label>Cuéntame tu idea<textarea name="mensaje" required maxlength="1200" placeholder="Describe brevemente tu proyecto..."></textarea></label><div class="contact-actions" aria-label="Canales de contacto"><a class="contact-highlight contact-link" href="mailto:viystudio1@gmail.com"><span class="contact-symbol mail-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span class="contact-copy"><strong>Correo electrónico</strong><span>viystudio1@gmail.com</span><small>Escríbeme para cotizaciones y proyectos.</small></span></a><a class="contact-highlight contact-link" href="https://wa.me/525518485945" target="_blank" rel="noopener noreferrer"><span class="contact-symbol whatsapp-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.2 11.8a8.2 8.2 0 0 1-12.1 7.1L4 20l1.1-4A8.2 8.2 0 1 1 20.2 11.8Z"/><path d="M8.5 8.2c.3-.6.6-.6 1-.6h.4c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.6.7c-.2.2-.2.4 0 .7.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.5.7c.3.1.4.3.4.5 0 .4-.2 1.1-.7 1.5-.5.4-1.1.6-1.8.5-1-.1-2.3-.7-3.7-1.9-1.2-1-2.1-2.4-2.3-3.3-.2-.9 0-1.5.6-2.4Z"/></svg></span><span class="contact-copy"><strong>WhatsApp</strong><span>Envíame un mensaje directo</span><small>Atención rápida para resolver tus dudas.</small></span><span class="contact-arrow">↗</span></a></div><p class="form-status" id="form-status" aria-live="polite"></p></form></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner"><a class="footer-brand" href="#inicio">VIY <span>Studio</span></a><p>«Crea, lucha, supera y nunca te rindas»</p><small>© <span id="current-year"></span> VIY Studio · Creatividad, código y propósito.</small></div></footer>
+
+  <div class="admin-backdrop" id="admin-backdrop" hidden><section class="admin-panel" role="dialog" aria-modal="true" aria-labelledby="admin-title"><div class="admin-head"><h2 id="admin-title">Administrar tienda</h2><button class="icon-close" id="admin-close" type="button" aria-label="Cerrar administración">×</button></div><p class="admin-warning">Los productos se guardan solamente en este navegador y dispositivo. Para una tienda pública sincronizada se necesita una base de datos y un sistema seguro de administración.</p><form class="admin-form" id="product-form"><label>Nombre del producto<input name="title" required maxlength="90" placeholder="Nombre del producto"></label><label>Descripción<textarea name="description" required maxlength="500" placeholder="Describe el producto"></textarea></label><label>Precio en MXN<input name="price" type="number" min="1" step="0.01" required placeholder="Ej. 150"></label><label>Fotografía (opcional)<input name="photo" type="file" accept="image/*"></label><button class="btn btn-primary" type="submit">Publicar producto</button></form><h3>Productos publicados</h3><div id="admin-product-list"></div></section></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

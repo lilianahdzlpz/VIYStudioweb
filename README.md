@@ -1,20 +1,23 @@
-# VIY Studio — edición identidad neón
+# VIY Studio — versión visual neón
 
-## Abrir
-Descomprime la carpeta y abre `index.html` en un navegador. Mantén `logo-viy.jpg`, `style.css` y `script.js` junto al HTML.
+## Archivos
+- `index.html`: página completa con Inicio, Servicios, Portafolio, Habilidades, Aplicaciones, Tienda, Bolsa de trabajo y Contacto.
+- `style.css`: diseño neón y fondo espacial animado.
+- `script.js`: menú de corazón, filtros del portafolio, formulario, carrito y administración local de productos.
+- `logo-viy.png`: logotipo.
+- `fondo-viy-neon.jpg`: fondo visual de referencia.
 
-## Secciones incluidas
-- Inicio con el nuevo eslogan oficial.
-- Servicios, portafolio de muestra, habilidades y proyectos en desarrollo.
-- Tienda con carrito y panel local para administrar productos en este navegador.
-- Bolsa de trabajo con formulario que prepara un correo; la persona debe adjuntar su CV manualmente.
-- Formulario de contacto que prepara un correo.
+## Abrir en Acode (Android)
+1. Descomprime el ZIP completo en una carpeta nueva.
+2. En Acode abre esa carpeta y luego `index.html`.
+3. Pulsa Vista previa.
+4. Mantén los cinco archivos juntos; no cambies sus nombres ni muevas el fondo o el logo.
 
-## Personalizar antes de publicar
-1. En `script.js`, cambia `ADMIN_PASSWORD` por una clave propia.
-2. En `script.js`, reemplaza `viystudio1@gmail.com` por el correo real de VIY Studio en los dos formularios.
-3. En `script.js`, configura `WHATSAPP_NUMBER` con el número de WhatsApp en formato internacional, solo dígitos (México: 52 + número).
-4. Publica todos los archivos juntos en tu hosting.
-
-## Importante sobre la administración y las ventas
-La bolsa de trabajo y el contacto abren el programa de correo del visitante; no guardan solicitudes en un servidor. Esta entrega incluye catálogo, carrito y un panel local para añadir/eliminar productos. Los datos se guardan en el navegador/dispositivo donde se administran (localStorage), no se sincronizan entre dispositivos ni constituyen autenticación segura. El pedido se envía a WhatsApp cuando configures el número. No incluye cobro en línea, inventario compartido ni base de datos. Para una tienda pública multi-dispositivo y pagos reales se necesita backend, autenticación y pasarela de pago.
+## Importante
+- El menú de corazón se abre en móvil.
+- Los filtros del portafolio funcionan.
+- La tienda permite agregar productos desde “Administrar productos”, pero los guarda solo en el navegador de ese dispositivo mediante almacenamiento local. No es una tienda conectada a una base de datos ni un panel seguro para publicar en internet.
+- El carrito calcula el total. Mercado Pago abre el enlace de pago configurado; el sitio no verifica automáticamente pagos.
+- El pedido por WhatsApp usa el número configurado de VIY Studio.
+- El formulario prepara un correo para `viystudio1@gmail.com`; el usuario debe confirmar el envío en su aplicación de correo.
+- Los proyectos y aplicaciones se identifican como proyectos o desarrollos, sin afirmar que están terminados.
