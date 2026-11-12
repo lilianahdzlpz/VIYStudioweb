@@ -157,161 +157,111 @@ const WHATSAPP_NUMBER = "525518485945";
 })();
 
 /* ==========================================
-   TIENDA VIY STUDIO
+   TIENDA VIY STUDIO — SUPABASE
    ========================================== */
 
 (function () {
-  const STORAGE_KEY = "viystudio_products_v1";
+  const SUPABASE_URL = "https://owmrnoipnswhgjzcodlo.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_3jMG4nCaTdAW1bHCVg2dxA_5YMSs2gZ";
+  const ADMIN_EMAIL = "viystudio1@gmail.com";
+  const ADMIN_UID = "59c108be-a9ee-474e-bcc8-321c8581fd92";
+  const BUCKET = "viy-products";
 
   const tienda = document.getElementById("store-grid");
   const administracion = document.getElementById("admin-backdrop");
   const carritoPanel = document.getElementById("cart-panel");
-
   if (!tienda || !administracion || !carritoPanel) return;
 
-  let productos = leerProductos();
+  if (!window.supabase || typeof window.supabase.createClient !== "function") {
+    tienda.innerHTML = '<div class="store-empty"><h3>La tienda no pudo conectarse</h3><p>Recarga la página para intentarlo de nuevo.</p></div>';
+    return;
+  }
+
+  const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+  let productos = [];
   let carrito = [];
-
-  /* LEER PRODUCTOS GUARDADOS */
-
-  function leerProductos() {
-    try {
-      return JSON.parse(
-        localStorage.getItem(STORAGE_KEY) || "[]"
-      );
-    } catch (error) {
-      return [];
-    }
-  }
-
-  /* GUARDAR PRODUCTOS */
-
-  function guardarProductos() {
-    try {
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(productos)
-      );
-      return true;
-    } catch (error) {
-      alert(
-        "No se pudieron guardar los productos. " +
-        "Puede faltar espacio de almacenamiento."
-      );
-      return false;
-    }
-  }
-
-  /* FORMATO DE PRECIOS */
+  let usuarioAdmin = null;
 
   function dinero(cantidad) {
-    return Number(cantidad).toLocaleString("es-MX", {
-      style: "currency",
-      currency: "MXN"
-    });
+    return Number(cantidad).toLocaleString("es-MX", { style: "currency", currency: "MXN" });
   }
-
-  /* PROTEGER TEXTO MOSTRADO EN HTML */
 
   function seguro(texto) {
-    return String(texto).replace(/[&<>"']/g, function (caracter) {
-      return {
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      }[caracter];
+    return String(texto == null ? "" : texto).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
 
-  /* MOSTRAR PRODUCTOS */
+  function estado(id, mensaje) {
+    const elemento = document.getElementById(id);
+    if (elemento) elemento.textContent = mensaje || "";
+  }
+
+  function fotoPublica(ruta) {
+    if (!ruta) return "";
+    return db.storage.from(BUCKET).getPublicUrl(ruta).data.publicUrl;
+  }
+
+  async function cargarProductos() {
+    tienda.innerHTML = '<div class="store-empty"><p>Cargando creaciones de VIY Studio…</p></div>';
+    const { data, error } = await db.from("viy_products")
+      .select("id,title,description,price,photo_path,created_at")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error("Error al cargar productos:", error);
+      tienda.innerHTML = '<div class="store-empty"><h3>No pudimos cargar la tienda</h3><p>Intenta recargar la página más tarde.</p></div>';
+      return;
+    }
+    productos = data || [];
+    mostrarProductos();
+    mostrarAdministracion();
+    actualizarCarrito();
+    actualizarContador();
+  }
 
   function mostrarProductos() {
     if (!productos.length) {
-      tienda.innerHTML =
-        '<div class="store-empty">' +
-          '<span>✧</span>' +
-          '<h3>Próximamente en VIY Studio</h3>' +
-          '<p>Estamos preparando nuestras primeras creaciones.</p>' +
-        '</div>';
-
+      tienda.innerHTML = '<div class="store-empty"><span>✧</span><h3>Próximamente en VIY Studio</h3><p>Estamos preparando nuestras primeras creaciones.</p></div>';
       return;
     }
 
-    tienda.innerHTML = productos.map(function (producto) {
-      return (
-        '<article class="store-card">' +
-
-          (producto.photo
-            ? '<img class="store-photo" src="' +
-              producto.photo +
-              '" alt="' + seguro(producto.title) + '">'
-            : '<div class="store-photo store-empty">♡</div>') +
-
-          '<div class="store-info">' +
-            '<h3>' + seguro(producto.title) + '</h3>' +
-            '<p>' + seguro(producto.description) + '</p>' +
-            '<div class="store-price">' +
-              dinero(producto.price) +
-            '</div>' +
-            '<button class="btn btn-primary add-cart" ' +
-              'data-id="' + seguro(producto.id) + '" ' +
-              'type="button">' +
-              'Agregar al carrito' +
-            '</button>' +
-          '</div>' +
-
-        '</article>'
-      );
+    tienda.innerHTML = productos.map(function (p) {
+      const url = fotoPublica(p.photo_path);
+      return '<article class="store-card">' +
+        (url ? '<img class="store-photo" src="' + seguro(url) + '" alt="' + seguro(p.title) + '" loading="lazy">' : '<div class="store-photo store-empty">♡</div>') +
+        '<div class="store-info"><h3>' + seguro(p.title) + '</h3><p>' + seguro(p.description) + '</p>' +
+        '<div class="store-price">' + dinero(p.price) + '</div>' +
+        '<button class="btn btn-primary add-cart" data-id="' + seguro(p.id) + '" type="button">Agregar al carrito</button></div></article>';
     }).join("");
 
     tienda.querySelectorAll(".add-cart").forEach(function (boton) {
       boton.addEventListener("click", function () {
-        const producto = productos.find(function (elemento) {
-          return elemento.id === boton.dataset.id;
-        });
-
-        if (!producto) return;
-
-        carrito.push(producto);
+        const p = productos.find(function (item) { return item.id === boton.dataset.id; });
+        if (!p) return;
+        carrito.push(p);
         actualizarCarrito();
         actualizarContador();
       });
     });
   }
 
-  /* ACTUALIZAR CONTADOR */
-
   function actualizarContador() {
     const contador = document.getElementById("cart-count");
-
-    if (contador) {
-      contador.textContent = carrito.length;
-    }
+    if (contador) contador.textContent = carrito.length;
   }
-
-  /* MOSTRAR CARRITO */
 
   function actualizarCarrito() {
     const elementos = document.getElementById("cart-items");
     const totalElemento = document.getElementById("cart-total");
-
     if (!elementos || !totalElemento) return;
 
     if (!carrito.length) {
       elementos.innerHTML = "<p>Tu carrito está vacío.</p>";
     } else {
-      elementos.innerHTML = carrito.map(function (producto, indice) {
-        return (
-          '<div class="cart-line">' +
-            '<span>' + seguro(producto.title) + '</span>' +
-            '<span>' + dinero(producto.price) +
-              ' <button type="button" data-remove="' + indice +
-              '" aria-label="Quitar producto">×</button>' +
-            '</span>' +
-          '</div>'
-        );
+      elementos.innerHTML = carrito.map(function (p, i) {
+        return '<div class="cart-line"><span>' + seguro(p.title) + '</span><span>' +
+          dinero(p.price) + ' <button type="button" data-remove="' + i + '" aria-label="Quitar producto">×</button></span></div>';
       }).join("");
     }
 
@@ -323,217 +273,227 @@ const WHATSAPP_NUMBER = "525518485945";
       });
     });
 
-    const total = carrito.reduce(function (suma, producto) {
-      return suma + Number(producto.price);
-    }, 0);
-
+    const total = carrito.reduce(function (suma, p) { return suma + Number(p.price); }, 0);
     totalElemento.textContent = "Total: " + dinero(total);
   }
 
-  /* ADMINISTRACIÓN LOCAL */
+  async function comprobarSesion() {
+    const { data, error } = await db.auth.getSession();
+    if (error) console.warn("No se pudo recuperar la sesión:", error);
+    const usuario = data && data.session ? data.session.user : null;
 
-  function mostrarAdministracion() {
+    if (usuario && usuario.id === ADMIN_UID && usuario.email === ADMIN_EMAIL) {
+      usuarioAdmin = usuario;
+      mostrarVistaAdmin(true);
+      return true;
+    }
+
+    if (usuario) await db.auth.signOut();
+    usuarioAdmin = null;
+    mostrarVistaAdmin(false);
+    return false;
+  }
+
+  function mostrarVistaAdmin(autenticado) {
+    const login = document.getElementById("admin-login");
+    const dashboard = document.getElementById("admin-dashboard");
+    if (login) login.hidden = autenticado;
+    if (dashboard) dashboard.hidden = !autenticado;
+    if (autenticado) mostrarAdministracion();
+  }
+
+  async function abrirAdministracion() {
+    administracion.hidden = false;
+    estado("admin-login-status", "");
+    await comprobarSesion();
+  }
+
+  async function cerrarSesion() {
+    const { error } = await db.auth.signOut();
+    if (error) {
+      estado("admin-login-status", "No se pudo cerrar la sesión. Inténtalo de nuevo.");
+      return;
+    }
+    usuarioAdmin = null;
+    mostrarVistaAdmin(false);
+    estado("admin-login-status", "Sesión cerrada.");
+  }
+
+  const botonAdmin = document.getElementById("admin-launch");
+  const cerrarAdmin = document.getElementById("admin-close");
+  const formularioLogin = document.getElementById("admin-login-form");
+  const botonLogout = document.getElementById("admin-logout");
+
+  if (botonAdmin) botonAdmin.addEventListener("click", abrirAdministracion);
+  if (cerrarAdmin) cerrarAdmin.addEventListener("click", function () { administracion.hidden = true; });
+  administracion.addEventListener("click", function (e) {
+    if (e.target === administracion) administracion.hidden = true;
+  });
+  if (botonLogout) botonLogout.addEventListener("click", cerrarSesion);
+
+  if (formularioLogin) {
+    formularioLogin.addEventListener("submit", async function (evento) {
+      evento.preventDefault();
+      const boton = document.getElementById("admin-login-button");
+      const password = String(new FormData(formularioLogin).get("password") || "");
+      if (!password) return;
+      boton.disabled = true;
+      boton.textContent = "Verificando…";
+      estado("admin-login-status", "");
+
+      const { data, error } = await db.auth.signInWithPassword({ email: ADMIN_EMAIL, password: password });
+      formularioLogin.reset();
+      boton.disabled = false;
+      boton.textContent = "Entrar";
+
+      if (error || !data || !data.user || data.user.id !== ADMIN_UID) {
+        if (data && data.user) await db.auth.signOut();
+        estado("admin-login-status", "No se pudo iniciar sesión. Verifica tu contraseña.");
+        mostrarVistaAdmin(false);
+        return;
+      }
+
+      usuarioAdmin = data.user;
+      mostrarVistaAdmin(true);
+      estado("admin-login-status", "");
+      await cargarProductos();
+    });
+  }
+
+  async function mostrarAdministracion() {
     const lista = document.getElementById("admin-product-list");
-
     if (!lista) return;
-
+    if (!usuarioAdmin) {
+      lista.innerHTML = "";
+      return;
+    }
     if (!productos.length) {
       lista.innerHTML = "<p>Aún no hay productos publicados.</p>";
       return;
     }
 
-    lista.innerHTML = productos.map(function (producto) {
-      return (
-        '<div class="admin-product-row">' +
-          '<span>' + seguro(producto.title) +
-          ' · ' + dinero(producto.price) + '</span>' +
-          '<button type="button" data-delete="' +
-          seguro(producto.id) + '">Eliminar</button>' +
-        '</div>'
-      );
+    lista.innerHTML = productos.map(function (p) {
+      return '<div class="admin-product-row"><span>' + seguro(p.title) + ' · ' + dinero(p.price) +
+        '</span><button type="button" data-delete="' + seguro(p.id) + '">Eliminar</button></div>';
     }).join("");
 
     lista.querySelectorAll("[data-delete]").forEach(function (boton) {
-      boton.addEventListener("click", function () {
-        productos = productos.filter(function (producto) {
-          return producto.id !== boton.dataset.delete;
-        });
-
-        if (guardarProductos()) {
-          carrito = carrito.filter(function (producto) {
-            return productos.some(function (guardado) {
-              return guardado.id === producto.id;
-            });
-          });
-
-          mostrarProductos();
-          mostrarAdministracion();
-          actualizarCarrito();
-          actualizarContador();
+      boton.addEventListener("click", async function () {
+        if (!usuarioAdmin || usuarioAdmin.id !== ADMIN_UID) return;
+        if (!window.confirm("¿Eliminar este producto de la tienda?")) return;
+        boton.disabled = true;
+        const producto = productos.find(function (p) { return p.id === boton.dataset.delete; });
+        if (!producto) return;
+        const { error } = await db.from("viy_products").delete().eq("id", producto.id);
+        if (error) {
+          console.error("Error al eliminar producto:", error);
+          boton.disabled = false;
+          alert("No se pudo eliminar el producto. Inténtalo de nuevo.");
+          return;
         }
+        if (producto.photo_path) {
+          const { error: storageError } = await db.storage.from(BUCKET).remove([producto.photo_path]);
+          if (storageError) console.warn("No se pudo eliminar la fotografía:", storageError);
+        }
+        carrito = carrito.filter(function (p) { return p.id !== producto.id; });
+        await cargarProductos();
       });
     });
   }
 
-  /* ABRIR ADMINISTRACIÓN */
-
-  const botonAdmin = document.getElementById("admin-launch");
-  const cerrarAdmin = document.getElementById("admin-close");
-
-  if (botonAdmin) {
-    botonAdmin.addEventListener("click", function () {
-      administracion.hidden = false;
-      mostrarAdministracion();
-    });
-  }
-
-  if (cerrarAdmin) {
-    cerrarAdmin.addEventListener("click", function () {
-      administracion.hidden = true;
-    });
-  }
-
-  administracion.addEventListener("click", function (evento) {
-    if (evento.target === administracion) {
-      administracion.hidden = true;
-    }
-  });
-
-  /* PUBLICAR PRODUCTOS */
-
   const formularioProducto = document.getElementById("product-form");
-
   if (formularioProducto) {
-    formularioProducto.addEventListener("submit", function (evento) {
+    formularioProducto.addEventListener("submit", async function (evento) {
       evento.preventDefault();
-
-      const formulario = evento.currentTarget;
-      const datos = new FormData(formulario);
-      const archivo = formulario.elements.photo.files[0];
-
-      const titulo = String(datos.get("title") || "").trim();
-      const precio = Number(datos.get("price"));
-      const descripcion = String(
-        datos.get("description") || ""
-      ).trim();
-
-      if (!titulo || !descripcion || !Number.isFinite(precio) || precio <= 0) {
-        alert("Revisa el nombre, la descripción y el precio.");
+      if (!usuarioAdmin || usuarioAdmin.id !== ADMIN_UID) {
+        estado("product-status", "Inicia sesión para publicar productos.");
         return;
       }
 
-      function crearProducto(foto) {
-        const nuevoProducto = {
-          id: Date.now().toString(36) +
-            Math.random().toString(36).slice(2, 7),
-          title: titulo,
-          price: precio,
-          description: descripcion,
-          photo: foto || ""
-        };
+      const boton = document.getElementById("publish-product-button");
+      const datos = new FormData(formularioProducto);
+      const archivo = formularioProducto.elements.photo.files[0];
+      const title = String(datos.get("title") || "").trim();
+      const description = String(datos.get("description") || "").trim();
+      const price = Number(datos.get("price"));
 
-        productos.push(nuevoProducto);
-
-        if (guardarProductos()) {
-          mostrarProductos();
-          mostrarAdministracion();
-          formulario.reset();
-          alert("Producto publicado en este navegador.");
-        } else {
-          productos.pop();
-        }
+      if (!title || !description || !Number.isFinite(price) || price <= 0) {
+        estado("product-status", "Revisa el nombre, la descripción y el precio.");
+        return;
       }
 
-      if (archivo) {
-        if (!archivo.type.startsWith("image/")) {
-          alert("Selecciona un archivo de imagen.");
-          return;
+      const tiposPermitidos = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+      if (archivo && (!tiposPermitidos.includes(archivo.type) || archivo.size > 5 * 1024 * 1024)) {
+        estado("product-status", "Usa JPG, PNG, WEBP o GIF de máximo 5 MB.");
+        return;
+      }
+
+      boton.disabled = true;
+      boton.textContent = "Publicando…";
+      estado("product-status", "Guardando producto en la nube…");
+      let photo_path = null;
+
+      try {
+        if (archivo) {
+          const extension = ({ "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif" })[archivo.type];
+          const nombreArchivo = crypto.randomUUID() + "." + extension;
+          const { data: subida, error: errorSubida } = await db.storage.from(BUCKET).upload(nombreArchivo, archivo, {
+            cacheControl: "3600",
+            contentType: archivo.type,
+            upsert: false
+          });
+          if (errorSubida) throw errorSubida;
+          photo_path = subida.path;
         }
 
-        if (archivo.size > 1500000) {
-          alert("La foto debe pesar menos de 1.5 MB.");
-          return;
+        const { error } = await db.from("viy_products").insert([{ title, description, price, photo_path }]);
+        if (error) throw error;
+
+        formularioProducto.reset();
+        estado("product-status", "¡Producto publicado correctamente!");
+        await cargarProductos();
+      } catch (error) {
+        console.error("Error al publicar producto:", error);
+        if (photo_path) {
+          await db.storage.from(BUCKET).remove([photo_path]);
         }
-
-        const lector = new FileReader();
-
-        lector.onload = function () {
-          crearProducto(lector.result);
-        };
-
-        lector.onerror = function () {
-          alert("No se pudo leer la fotografía.");
-        };
-
-        lector.readAsDataURL(archivo);
-      } else {
-        crearProducto("");
+        estado("product-status", "No se pudo publicar. Revisa la conexión y los permisos e inténtalo otra vez.");
+      } finally {
+        boton.disabled = false;
+        boton.textContent = "Publicar producto";
       }
     });
   }
-
-  /* ABRIR Y CERRAR CARRITO */
 
   const abrirCarrito = document.getElementById("cart-open");
   const cerrarCarrito = document.getElementById("cart-close");
-
-  if (abrirCarrito) {
-    abrirCarrito.addEventListener("click", function () {
-      carritoPanel.hidden = false;
-      actualizarCarrito();
-    });
-  }
-
-  if (cerrarCarrito) {
-    cerrarCarrito.addEventListener("click", function () {
-      carritoPanel.hidden = true;
-    });
-  }
-
-  /* SOLICITAR PEDIDO POR WHATSAPP */
+  if (abrirCarrito) abrirCarrito.addEventListener("click", function () {
+    carritoPanel.hidden = false;
+    actualizarCarrito();
+  });
+  if (cerrarCarrito) cerrarCarrito.addEventListener("click", function () { carritoPanel.hidden = true; });
 
   const botonPedido = document.getElementById("checkout-button");
-
   if (botonPedido) {
     botonPedido.addEventListener("click", function () {
       if (!carrito.length) {
         alert("Agrega al menos un producto al carrito.");
         return;
       }
-
       if (!/^\d{10,15}$/.test(WHATSAPP_NUMBER)) {
-        alert(
-          "Todavía falta configurar el número de WhatsApp " +
-          "de VIY Studio en script.js."
-        );
+        alert("Todavía falta configurar el número de WhatsApp de VIY Studio en script.js.");
         return;
       }
-
-      const total = carrito.reduce(function (suma, producto) {
-        return suma + Number(producto.price);
-      }, 0);
-
-      const detalle = carrito.map(function (producto) {
-        return "• " + producto.title + " — " + dinero(producto.price);
-      }).join("\n");
-
-      const mensaje =
-        "Hola, VIY Studio. Quiero solicitar este pedido:\n\n" +
-        detalle +
-        "\n\nTotal: " + dinero(total);
-
-      const url = "https://wa.me/" +
-        WHATSAPP_NUMBER +
-        "?text=" + encodeURIComponent(mensaje);
-
+      const total = carrito.reduce(function (suma, p) { return suma + Number(p.price); }, 0);
+      const detalle = carrito.map(function (p) { return "• " + p.title + " — " + dinero(p.price); }).join("\n");
+      const mensaje = "Hola, VIY Studio. Quiero solicitar este pedido:\n\n" + detalle + "\n\nTotal: " + dinero(total);
+      const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(mensaje);
       window.open(url, "_blank", "noopener,noreferrer");
     });
   }
 
-  /* INICIAR TIENDA */
-
   mostrarProductos();
   actualizarCarrito();
   actualizarContador();
-
+  cargarProductos();
 })();
