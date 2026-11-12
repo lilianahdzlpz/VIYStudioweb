@@ -137,7 +137,22 @@
             <input name="password" type="password" required autocomplete="current-password" placeholder="Escribe tu contraseña">
           </label>
           <button class="btn btn-primary" type="submit" id="admin-login-button">Entrar</button>
+          <button class="btn btn-secondary" type="button" id="admin-forgot-password">Olvidé mi contraseña</button>
           <p class="form-status" id="admin-login-status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div id="admin-password-recovery" hidden>
+        <p class="admin-warning">Recuperación de acceso. Crea una contraseña nueva para tu cuenta.</p>
+        <form class="admin-form" id="admin-password-recovery-form">
+          <label>Nueva contraseña
+            <input name="new-password" type="password" required minlength="8" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
+          </label>
+          <label>Confirma la nueva contraseña
+            <input name="confirm-password" type="password" required minlength="8" autocomplete="new-password" placeholder="Escríbela otra vez">
+          </label>
+          <button class="btn btn-primary" type="submit" id="admin-password-recovery-button">Guardar contraseña nueva</button>
+          <p class="form-status" id="admin-password-recovery-status" aria-live="polite"></p>
         </form>
       </div>
 
