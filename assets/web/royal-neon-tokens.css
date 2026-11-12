@@ -1,0 +1,1 @@
+:root{--viy-black:#05020A;--viy-pink:#FF19C8;--viy-purple:#8B35FF;--viy-blue:#078BFF;--viy-gold:#FFBD45;--viy-white:#FFF8FF;--viy-gradient:linear-gradient(105deg,var(--viy-pink),var(--viy-purple),var(--viy-blue))}.viy-primary{background:var(--viy-gradient);color:white}.viy-gold{color:var(--viy-gold)}
