@@ -1,1 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="t d"><title id="t">VIY Studio Royal Neon</title><desc id="d">Emblema circular con serpiente estilizada, corona y letras VIY Studio.</desc><defs><linearGradient id="neon" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff19c8"/><stop offset=".48" stop-color="#8b35ff"/><stop offset="1" stop-color="#078bff"/></linearGradient><linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff0a6"/><stop offset=".42" stop-color="#ffbd45"/><stop offset="1" stop-color="#b96813"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="1000" height="1000" rx="180" fill="#05020a"/><circle cx="500" cy="480" r="420" fill="none" stroke="url(#neon)" stroke-width="22" filter="url(#glow)"/><path d="M190 580 C80 330 280 170 470 260 C650 345 710 180 820 280 C900 370 790 470 660 420 C520 365 445 520 570 580 C700 640 850 560 810 760 C770 930 520 850 450 720 C390 610 300 720 210 650" fill="none" stroke="url(#neon)" stroke-width="62" stroke-linecap="round" filter="url(#glow)"/><path d="M390 210 L435 105 L500 170 L565 105 L610 210 L575 260 L425 260Z" fill="url(#gold)" stroke="#fff0b8" stroke-width="12"/><path d="M435 170 L435 100 M500 170 L500 55 M565 170 L565 100" stroke="#fff0b8" stroke-width="16"/><circle cx="435" cy="92" r="20" fill="#ff19c8"/><circle cx="500" cy="48" r="24" fill="#078bff"/><circle cx="565" cy="92" r="20" fill="#8b35ff"/><text x="500" y="555" text-anchor="middle" font-family="Georgia,serif" font-size="260" font-weight="bold" letter-spacing="-18" fill="url(#neon)" stroke="#fff0cf" stroke-width="5" paint-order="stroke">VIY</text><text x="500" y="700" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="150" fill="url(#gold)" stroke="#fff1cb" stroke-width="3" paint-order="stroke">Studio</text><path d="M300 780 Q500 900 700 780" fill="none" stroke="url(#neon)" stroke-width="16" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
+<title id="title">VIY Studio — Royal Neon Red</title>
+<desc id="desc">Emblema vectorial de VIY Studio: serpiente coronada con detalles neón rojos, magenta, violetas y azules sobre negro.</desc>
+<defs>
+ <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff214f"/><stop offset=".34" stop-color="#ff19c8"/><stop offset=".68" stop-color="#963cff"/><stop offset="1" stop-color="#078bff"/></linearGradient>
+ <linearGradient id="snake" x1="0" y1="0" x2="1" y2=".8"><stop stop-color="#10152f"/><stop offset=".3" stop-color="#7b22d8"/><stop offset=".58" stop-color="#ff286e"/><stop offset=".82" stop-color="#126de8"/><stop offset="1" stop-color="#07102b"/></linearGradient>
+ <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset=".22" stop-color="#ffb5f2"/><stop offset=".48" stop-color="#ed27cb"/><stop offset=".72" stop-color="#6e27d8"/><stop offset="1" stop-color="#48caff"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0bf"/><stop offset=".45" stop-color="#e6a94a"/><stop offset="1" stop-color="#a85a24"/></linearGradient>
+ <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <pattern id="scales" width="28" height="24" patternUnits="userSpaceOnUse"><path d="M1 2Q14 18 27 2M-13 14Q0 30 13 14M15 14Q28 30 41 14" fill="none" stroke="#c6a7ff" stroke-opacity=".42" stroke-width="2.4"/></pattern>
+</defs>
+<rect width="1000" height="1000" rx="120" fill="#030208"/>
+<g fill="none" stroke="url(#neon)" stroke-linecap="round" filter="url(#glow)">
+ <path d="M165 520C68 390 135 190 300 150C414 122 500 224 604 186C714 146 816 185 835 292C858 421 721 475 626 426C525 374 428 456 478 558C525 654 688 621 790 690C870 746 814 853 714 862" stroke-width="25" opacity=".92"/>
+ <path d="M130 360C78 278 120 184 213 130M780 165C873 185 919 278 866 364M142 686C205 804 326 865 431 850M855 580C916 650 906 755 837 807" stroke-width="13" opacity=".85"/>
+</g>
+<path d="M188 580C120 470 198 300 330 300C430 300 468 408 565 402C675 397 715 285 640 235C584 197 500 222 460 282" fill="none" stroke="#030208" stroke-width="112" stroke-linecap="round"/>
+<path d="M188 580C120 470 198 300 330 300C430 300 468 408 565 402C675 397 715 285 640 235C584 197 500 222 460 282" fill="none" stroke="url(#snake)" stroke-width="94" stroke-linecap="round" filter="url(#glow)"/>
+<path d="M188 580C120 470 198 300 330 300C430 300 468 408 565 402C675 397 715 285 640 235C584 197 500 222 460 282" fill="none" stroke="url(#scales)" stroke-width="75" stroke-linecap="round" opacity=".75"/>
+<path d="M435 278C482 210 596 184 700 232C750 255 779 296 764 333C751 366 704 376 659 360L604 344C570 335 542 351 523 380L490 418L468 378C441 345 421 315 435 278Z" fill="url(#snake)" stroke="url(#chrome)" stroke-width="8" filter="url(#glow)"/>
+<path d="M475 300Q568 244 710 286Q671 315 610 313Q548 310 503 350" fill="none" stroke="#ffb4ef" stroke-width="7" opacity=".85"/>
+<path d="M684 296L742 310" stroke="#ff214f" stroke-width="12" stroke-linecap="round"/>
+<ellipse cx="692" cy="286" rx="18" ry="12" fill="#ff214f" filter="url(#glow)"/><ellipse cx="697" cy="286" rx="5" ry="10" fill="#fff"/>
+<path d="M746 334Q795 363 830 342Q806 397 751 385L692 365" fill="#a40b48" stroke="#ff5bc9" stroke-width="6"/>
+<path d="M724 355L740 390L753 356M767 357L779 385L788 348" fill="#fff" stroke="#b9eaff" stroke-width="4"/>
+<path d="M820 346Q865 326 886 346Q858 362 829 358" fill="none" stroke="#ff244e" stroke-width="9" stroke-linecap="round"/>
+<g filter="url(#glow)" stroke="url(#gold)" stroke-width="8" stroke-linejoin="round">
+ <path d="M348 214L372 112L430 178L500 76L568 178L626 112L650 214Q500 270 348 214Z" fill="#1b0c27"/>
+ <path d="M372 112L405 190L430 178L500 76L548 184L568 178L626 112L614 218" fill="none"/>
+ <path d="M362 218Q500 265 638 218L626 246Q500 294 374 246Z" fill="url(#gold)"/>
+ <path d="M500 76L500 30"/><path d="M430 178L418 112M568 178L582 112"/>
+</g>
+<g fill="#078bff" stroke="#fff" stroke-width="3"><path d="M500 48L522 78L500 110L478 78Z"/><path d="M430 132L448 157L430 180L412 157Z"/><path d="M570 132L588 157L570 180L552 157Z"/></g>
+<text x="500" y="600" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="260" font-weight="bold" letter-spacing="-18" fill="url(#chrome)" stroke="#170b27" stroke-width="18" paint-order="stroke" filter="url(#glow)">VIY</text>
+<text x="500" y="750" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="150" font-style="italic" fill="url(#chrome)" stroke="#180824" stroke-width="9" paint-order="stroke" filter="url(#glow)">Studio</text>
+<path d="M215 790Q500 895 785 790" fill="none" stroke="url(#neon)" stroke-width="17" stroke-linecap="round" filter="url(#glow)"/>
+<path d="M500 815L535 862L500 908L465 862Z" fill="url(#neon)" stroke="#ff9ce9" stroke-width="5" filter="url(#glow)"/>
+<path d="M330 615L346 604M654 615L670 604" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
+</svg>
