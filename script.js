@@ -323,6 +323,71 @@ const WHATSAPP_NUMBER = "525518485945";
   const cerrarAdmin = document.getElementById("admin-close");
   const formularioLogin = document.getElementById("admin-login-form");
   const botonLogout = document.getElementById("admin-logout");
+  const botonRecuperar = document.getElementById("admin-forgot-password");
+  const formularioRecuperacion = document.getElementById("admin-password-recovery-form");
+  const panelRecuperacion = document.getElementById("admin-password-recovery");
+
+  db.auth.onAuthStateChange(function (evento, sesion) {
+    if (evento !== "PASSWORD_RECOVERY") return;
+    const usuario = sesion && sesion.user;
+    if (!usuario || usuario.id !== ADMIN_UID || usuario.email !== ADMIN_EMAIL) {
+      db.auth.signOut();
+      estado("admin-password-recovery-status", "El enlace no corresponde a la cuenta administradora.");
+      return;
+    }
+    usuarioAdmin = usuario;
+    administracion.hidden = false;
+    document.getElementById("admin-login").hidden = true;
+    document.getElementById("admin-dashboard").hidden = true;
+    panelRecuperacion.hidden = false;
+    estado("admin-password-recovery-status", "");
+  });
+
+  if (botonRecuperar) {
+    botonRecuperar.addEventListener("click", async function () {
+      botonRecuperar.disabled = true;
+      estado("admin-login-status", "Enviando enlace de recuperación al correo de VIY Studio…");
+      const redirectTo = window.location.origin + window.location.pathname;
+      const { error } = await db.auth.resetPasswordForEmail(ADMIN_EMAIL, { redirectTo });
+      botonRecuperar.disabled = false;
+      estado("admin-login-status", error
+        ? "No se pudo enviar el correo. Inténtalo más tarde o revisa la configuración de Auth."
+        : "Solicitud enviada. Revisa la bandeja de entrada y la carpeta de spam de VIY Studio.");
+    });
+  }
+
+  if (formularioRecuperacion) {
+    formularioRecuperacion.addEventListener("submit", async function (evento) {
+      evento.preventDefault();
+      const datos = new FormData(formularioRecuperacion);
+      const nueva = String(datos.get("new-password") || "");
+      const confirmar = String(datos.get("confirm-password") || "");
+      if (nueva.length < 8) {
+        estado("admin-password-recovery-status", "La contraseña debe tener al menos 8 caracteres.");
+        return;
+      }
+      if (nueva !== confirmar) {
+        estado("admin-password-recovery-status", "Las contraseñas no coinciden.");
+        return;
+      }
+      const boton = document.getElementById("admin-password-recovery-button");
+      boton.disabled = true;
+      boton.textContent = "Guardando…";
+      const { data, error } = await db.auth.updateUser({ password: nueva });
+      boton.disabled = false;
+      boton.textContent = "Guardar contraseña nueva";
+      if (error || !data || !data.user || data.user.id !== ADMIN_UID) {
+        estado("admin-password-recovery-status", "No se pudo actualizar la contraseña. Solicita un enlace nuevo e inténtalo otra vez.");
+        return;
+      }
+      usuarioAdmin = data.user;
+      formularioRecuperacion.reset();
+      panelRecuperacion.hidden = true;
+      mostrarVistaAdmin(true);
+      estado("admin-login-status", "Contraseña actualizada. Ya puedes administrar VIY Studio.");
+      await cargarProductos();
+    });
+  }
 
   if (botonAdmin) botonAdmin.addEventListener("click", abrirAdministracion);
   if (cerrarAdmin) cerrarAdmin.addEventListener("click", function () { administracion.hidden = true; });
