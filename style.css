@@ -490,3 +490,11 @@ body::after {
     background-repeat: repeat-y;
   }
 }
+
+/* Panel privado de administración VIY Studio */
+.admin-form input[type="password"] { width:100%; padding:12px; border-radius:10px; border:1px solid #a52bff66; background:#100b15; color:white; }
+.admin-form button:disabled { opacity:.6; cursor:wait; }
+.admin-dashboard-head { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.admin-dashboard-head .admin-warning { flex:1; margin:0; }
+.form-status { min-height:1.2em; color:#ffd36b; font-size:.9rem; }
+#admin-login[hidden], #admin-dashboard[hidden] { display:none !important; }
