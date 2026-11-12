@@ -2,8 +2,8 @@
    Capa visual adicional: conserva la estructura y los comportamientos existentes. */
 :root{
  --fondo:#05020a;--tarjeta:#100817;--claro:#1b0d28;
- --rosa:#ff19c8;--rosa-claro:#ff83e5;--morado:#8b35ff;
- --azul:#078bff;--oro:#ffbd45;--texto:#fff8ff;--suave:#d0c2dc;
+ --rosa:#ff214f;--rosa-claro:#ff86a4;--morado:#963cff;
+ --azul:#078bff;--oro:#b58a48;--texto:#fff8ff;--suave:#d0c2dc;
  --borde:rgba(192,92,255,.38);
 }
 html{scroll-behavior:smooth;scroll-padding-top:88px}
@@ -18,19 +18,19 @@ body::before{
 }
 body::after{
  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
- background:radial-gradient(ellipse at 12% 18%,rgba(255,25,200,.12),transparent 38%),
+ background:radial-gradient(ellipse at 12% 18%,rgba(255,33,79,.12),transparent 38%),
  radial-gradient(ellipse at 88% 72%,rgba(7,139,255,.13),transparent 42%);
  transform:none!important;animation:none!important;
 }
-.site-header{background:rgba(5,2,10,.88);border-bottom:1px solid rgba(255,25,200,.28);box-shadow:0 8px 32px #0008}
-.brand-mark{filter:drop-shadow(0 0 9px #ff19c8aa);border-radius:50%}
-.brand-name b,.footer-brand span{color:var(--oro);text-shadow:0 0 12px #ffbd4588}
+.site-header{background:rgba(5,2,10,.88);border-bottom:1px solid rgba(255,33,79,.28);box-shadow:0 8px 32px #0008}
+.brand-mark{filter:drop-shadow(0 0 9px #ff214faa);border-radius:50%}
+.brand-name b,.footer-brand span{color:#ff5278;text-shadow:0 0 12px #ff214f88}
 .nav-links a:hover,.nav-links a:focus-visible{color:var(--rosa-claro);text-shadow:0 0 14px #ff19c8}
 .hero{isolation:isolate}
 .hero h1,.section-heading h2{ text-shadow:0 4px 28px #000b}
 .hero-logo{filter:drop-shadow(0 0 22px #a02cff88) drop-shadow(0 0 38px #087bff44)}
 .logo-orbit{border-color:#ff19c877;box-shadow:0 0 28px #ff19c844,inset 0 0 28px #087bff33}
-.btn-primary{background:linear-gradient(105deg,#f000bd,#762cff 52%,#087bff);border:1px solid #ff9de9;box-shadow:0 0 18px #e600b855,inset 0 0 10px #ffffff22}
+.btn-primary{background:linear-gradient(105deg,#ff214f,#d51ca8 42%,#963cff 70%,#087bff);border:1px solid #ff9de9;box-shadow:0 0 18px #e600b855,inset 0 0 10px #ffffff22}
 .btn-primary:hover{box-shadow:0 0 28px #ff19c899,0 0 38px #087bff55;transform:translateY(-2px)}
 .btn-secondary{border:1px solid #a45cff;background:rgba(17,8,28,.82);box-shadow:inset 0 0 16px #8b35ff1c,0 0 14px #8b35ff22}
 .glass-card,.portfolio-card,.app-card,.skills-panel,.contact-panel,.store-card,.cart-panel{
