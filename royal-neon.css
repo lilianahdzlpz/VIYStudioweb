@@ -66,3 +66,19 @@ button:focus-visible,a:focus-visible{outline:2px solid #ff8be4;outline-offset:3p
 @media(prefers-reduced-motion:reduce){
  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+
+/* Royal Neon Red — logo visible and red identity accents */
+.brand-mark{display:block!important;width:58px!important;height:58px!important;min-width:58px;object-fit:contain!important;opacity:1!important;visibility:visible!important;mix-blend-mode:normal!important;filter:drop-shadow(0 0 10px #ff214f88)!important}
+.brand{gap:10px}
+.brand-viy{color:#ff345d!important;text-shadow:0 0 10px #ff214f99,0 0 22px #ff214f55}
+.brand-name b,.footer-brand span{color:#ff5477!important;text-shadow:0 0 12px #ff214f99!important}
+.hero-logo{display:block!important;opacity:1!important;visibility:visible!important;mix-blend-mode:normal!important;mask-image:none!important;-webkit-mask-image:none!important}
+.logo-orbit{border-color:#ff214f!important;box-shadow:0 0 22px #ff214f66,inset 0 0 24px #ff214f33!important}
+.section-kicker,.eyebrow{color:#ff718d!important;text-shadow:0 0 12px #ff214f66}
+.card-icon,.project-meta .badge{color:#ff5275!important;text-shadow:0 0 12px #ff214f77}
+.glass-card,.portfolio-card,.app-card,.contact-panel,.store-card{border-color:rgba(255,45,91,.34)!important}
+.glass-card:hover,.portfolio-card:hover,.app-card:hover,.store-card:hover{border-color:#ff345d!important;box-shadow:0 18px 42px #0008,0 0 24px #ff214f33!important}
+.nav-links a:hover,.card-link:hover{color:#ff6684!important;text-shadow:0 0 10px #ff214f88}
+.btn-secondary{border-color:#ff345d!important;box-shadow:inset 0 0 14px #ff214f22,0 0 12px #ff214f22!important}
+.status-dot{background:#ff345d!important;box-shadow:0 0 12px #ff214f!important}
